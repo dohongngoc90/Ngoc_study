@@ -65,6 +65,10 @@ class BasePage:
         # khác che pointer-event, click thường bị chặn/trượt. dispatch_event gửi
         # click thẳng tới đúng phần tử, bỏ qua overlay (giống DOM .click()).
         modal.get_by_role("button", name="Update").dispatch_event("click")
+        # Chờ toast xác nhận (vd 'Department updated.') trước khi reload: nó báo AJAX
+        # update đã xong. Nếu reload ngay (như trước) khi request còn đang bay, trên CI
+        # chậm request bị hủy -> update mất -> flaky. Chờ toast loại bỏ race này.
+        self.page.locator(self.TOAST_CONTAINER).wait_for(state="visible", timeout=10000)
         self.page.wait_for_load_state("networkidle")
         return self
 
