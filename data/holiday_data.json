@@ -1,0 +1,31 @@
+{
+  "create": [
+    {
+      "case_id": "TC_HOLIDAY_01_single_day",
+      "base_name": "QA_Auto_Holiday",
+      "start_date": "20-06-2026",
+      "end_date": "20-06-2026",
+      "description": "Ngày lễ tự động hóa - 1 ngày",
+      "desc": "Tạo ngày lễ trong 1 ngày rồi xóa (full CRUD)"
+    },
+    {
+      "case_id": "TC_HOLIDAY_02_date_range",
+      "base_name": "QA_Tet_Break",
+      "start_date": "20-06-2026",
+      "end_date": "25-06-2026",
+      "description": "Kỳ nghỉ kéo dài nhiều ngày",
+      "desc": "Tạo ngày lễ theo khoảng ngày (start < end) rồi xóa"
+    }
+  ],
+  "negative": [
+    {
+      "case_id": "TC_HOLIDAY_NEG_01_missing_description",
+      "base_name": "QA_NoDesc_Holiday",
+      "start_date": "20-06-2026",
+      "end_date": "20-06-2026",
+      "description": "",
+      "expect_toast_contains": "description",
+      "desc": "Bỏ trống mô tả -> app từ chối, toast '...description field is required'"
+    }
+  ]
+}

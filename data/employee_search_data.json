@@ -1,0 +1,34 @@
+{
+  "search": [
+    {
+      "case_id": "TC_EMP_01_common_letter",
+      "term": "a",
+      "expect_results": true,
+      "desc": "Ký tự phổ biến 'a' -> có ít nhất 1 kết quả"
+    },
+    {
+      "case_id": "TC_EMP_02_admin",
+      "term": "Admin",
+      "expect_results": true,
+      "desc": "Tìm theo tên 'Admin' -> có kết quả"
+    },
+    {
+      "case_id": "TC_EMP_03_no_match",
+      "term": "zzzz_no_match_9981",
+      "expect_results": false,
+      "desc": "Từ khóa vô nghĩa -> hiển thị trạng thái rỗng (no records)"
+    },
+    {
+      "case_id": "TC_EMP_04_empty_shows_all",
+      "term": "",
+      "expect_results": true,
+      "desc": "Ô tìm kiếm rỗng -> hiển thị toàn bộ bản ghi (đã verify: 12 records)"
+    },
+    {
+      "case_id": "TC_EMP_05_uppercase_insensitive",
+      "term": "ADMIN",
+      "expect_results": true,
+      "desc": "Tìm bằng chữ HOA 'ADMIN' -> vẫn có kết quả (search không phân biệt hoa/thường)"
+    }
+  ]
+}

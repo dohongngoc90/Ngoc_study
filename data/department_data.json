@@ -1,0 +1,27 @@
+{
+  "create": [
+    {
+      "case_id": "TC_DEPT_01_basic_ascii",
+      "base_name": "QA_Auto_Dept",
+      "desc": "Tạo phòng ban tên ASCII cơ bản rồi xóa (full CRUD)"
+    },
+    {
+      "case_id": "TC_DEPT_02_unicode_vietnamese",
+      "base_name": "Phong_Ky_Thuat",
+      "desc": "Tạo phòng ban có ký tự gợi nhớ tiếng Việt rồi xóa"
+    },
+    {
+      "case_id": "TC_DEPT_03_with_numbers",
+      "base_name": "Dept_2026_R1",
+      "desc": "Tạo phòng ban có chữ số rồi xóa"
+    }
+  ],
+  "negative": [
+    {
+      "case_id": "TC_DEPT_NEG_01_empty_name",
+      "name": "",
+      "expect_toast_contains": "required",
+      "desc": "Bỏ trống tên phòng ban -> app từ chối, toast '...department_name field is required'"
+    }
+  ]
+}

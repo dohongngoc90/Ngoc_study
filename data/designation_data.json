@@ -1,0 +1,28 @@
+{
+  "create": [
+    {
+      "case_id": "TC_DESIG_01_basic_ascii",
+      "base_name": "QA_Auto_Desig",
+      "department": "2",
+      "department_label": "Development",
+      "desc": "Tạo chức danh ASCII gắn phòng ban Development rồi xóa (full CRUD)"
+    },
+    {
+      "case_id": "TC_DESIG_02_with_description",
+      "base_name": "QA_Lead",
+      "department": "1",
+      "department_label": "QA",
+      "description": "Trưởng nhóm kiểm thử",
+      "desc": "Tạo chức danh có mô tả, gắn phòng ban QA rồi xóa"
+    }
+  ],
+  "negative": [
+    {
+      "case_id": "TC_DESIG_NEG_01_missing_department",
+      "base_name": "QA_NoDept",
+      "department": "",
+      "expect_toast_contains": "department",
+      "desc": "Không chọn phòng ban -> app từ chối, toast '...department field is required'"
+    }
+  ]
+}

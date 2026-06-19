@@ -1,0 +1,65 @@
+[
+  {
+    "case_id": "TC_LOGIN_01_valid_admin",
+    "username": "admin_example",
+    "password": "123456",
+    "expected": "success",
+    "desc": "Đăng nhập hợp lệ bằng tài khoản admin"
+  },
+  {
+    "case_id": "TC_LOGIN_02_wrong_password",
+    "username": "admin_example",
+    "password": "wrong_pass_999",
+    "expected": "fail",
+    "desc": "Sai mật khẩu -> ở lại trang login"
+  },
+  {
+    "case_id": "TC_LOGIN_03_unknown_user",
+    "username": "no_such_user_zz",
+    "password": "123456",
+    "expected": "fail",
+    "desc": "Username không tồn tại -> ở lại trang login"
+  },
+  {
+    "case_id": "TC_LOGIN_04_empty_username",
+    "username": "",
+    "password": "123456",
+    "expected": "fail",
+    "desc": "Bỏ trống username -> không đăng nhập được"
+  },
+  {
+    "case_id": "TC_LOGIN_05_empty_password",
+    "username": "admin_example",
+    "password": "",
+    "expected": "fail",
+    "desc": "Bỏ trống password -> không đăng nhập được"
+  },
+  {
+    "case_id": "TC_LOGIN_06_empty_both",
+    "username": "",
+    "password": "",
+    "expected": "fail",
+    "desc": "Bỏ trống cả hai trường -> không đăng nhập được"
+  },
+  {
+    "case_id": "TC_LOGIN_07_sql_injection",
+    "username": "admin_example' OR '1'='1",
+    "password": "anything",
+    "expected": "fail",
+    "desc": "Chuỗi SQL injection cơ bản -> phải bị từ chối"
+  },
+  {
+    "case_id": "TC_LOGIN_08_whitespace_username",
+    "username": "   ",
+    "password": "123456",
+    "expected": "fail",
+    "desc": "Username chỉ gồm khoảng trắng -> không đăng nhập được, ở lại login"
+  },
+  {
+    "case_id": "TC_LOGIN_09_xss_payload",
+    "username": "<script>alert(1)</script>",
+    "password": "123456",
+    "expected": "fail",
+    "desc": "Payload XSS ở username -> bị từ chối, không bypass, ở lại login"
+  }
+]

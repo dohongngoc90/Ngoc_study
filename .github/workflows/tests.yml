@@ -1,0 +1,48 @@
+# CI cho bộ automation HRM (Playwright Python + pytest, POM + DDT)
+# Test chạy trên demo công khai https://hrm.anhtester.com/erp -> không cần deploy app.
+name: Playwright Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"                    # cache theo requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright Chromium
+        run: playwright install --with-deps chromium
+
+      - name: Run pytest (headless)
+        env:
+          HEADLESS: "true"                # config/config.py đọc biến này
+        run: |
+          mkdir -p reports
+          pytest --html=reports/report.html --self-contained-html
+
+      - name: Upload test reports
+        if: always()                       # giữ report cả khi test fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            reports/report.html
+            reports/junit.xml
+            reports/screenshots/
+          retention-days: 7
